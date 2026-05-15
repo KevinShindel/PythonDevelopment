@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup as Bs
 
 
 class AbstractFactory:
-    """ interface  provides 3 methods to implement in sub-classes: create-protocol, create-port, create-parser """
+    """interface  provides 3 methods to implement in sub-classes: create-protocol, create-port, create-parser"""
 
     __metaclass__ = abc.ABCMeta
 
@@ -29,7 +29,7 @@ class AbstractFactory:
 class HTTPFactory(AbstractFactory):
 
     def create_protocol(self):
-        return 'https' if self.is_secure else 'http'
+        return "https" if self.is_secure else "http"
 
     def create_parser(self):
         return HTTPParser()
@@ -41,7 +41,7 @@ class HTTPFactory(AbstractFactory):
 class FTPFactory(AbstractFactory):
 
     def create_protocol(self):
-        return 'ftp'
+        return "ftp"
 
     def create_parser(self):
         return FTPParser()
@@ -60,34 +60,35 @@ class Port:
 
 
 class HTTPPort(Port):
-    """ A concrete product which represents http port """
+    """A concrete product which represents http port"""
 
     def __str__(self):
-        return '80'
+        return "80"
 
 
 class HTTPSecurePort(Port):
-    """ A concrete product which represents https port """
+    """A concrete product which represents https port"""
 
     def __str__(self):
-        return '443'
+        return "443"
 
 
 class FTPPort(Port):
-    """ A concrete product which represents ftp port """
+    """A concrete product which represents ftp port"""
 
     def __str__(self):
-        return '21'
+        return "21"
 
 
 class FTPSecurePort(Port):
 
     def __str__(self):
-        return '22'
+        return "22"
 
 
 class Parser:
-    """ abstract product to represent parser to parse web content """
+    """abstract product to represent parser to parse web content"""
+
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
@@ -99,20 +100,22 @@ class FTPParser(Parser):
 
     def __call__(self, content, *args, **kwargs):
         filenames = []
-        lines = content.split('\n')
+        lines = content.split("\n")
         for line in lines:
             splitted_line = line.split(None, 8)
             if len(splitted_line) == 9:
                 filenames.append(splitted_line[-1])
-        return '\n'.join(filenames)
+        return "\n".join(filenames)
 
 
 class HTTPParser(Parser):
 
     def __call__(self, content, *args, **kwargs):
         soup = Bs(content)
-        filenames = [link['href'] for link in soup.find_all('a') if hasattr(link, 'href')]
-        return '\n'.join(filenames)
+        filenames = [
+            link["href"] for link in soup.find_all("a") if hasattr(link, "href")
+        ]
+        return "\n".join(filenames)
 
 
 class Connector:
@@ -124,32 +127,34 @@ class Connector:
 
     @abc.abstractmethod
     def parse(self, content):
-        """ parses web content """
+        """parses web content"""
         pass
 
     def read(self, host, path):
-        """ A generic method for all subclasses, read web content """
-        url = self.protocol + '://' + host + ':' + str(self.port) + path
-        print('connecting to: ', url)
-        return urlopen(url).read().decode('utf-8')
+        """A generic method for all subclasses, read web content"""
+        url = self.protocol + "://" + host + ":" + str(self.port) + path
+        print("connecting to: ", url)
+        return urlopen(url).read().decode("utf-8")
 
 
-if __name__ == '__main__':
-    domain = 'ftp.freebsd.org'
-    path = '/pub/FreeBSD'
+if __name__ == "__main__":
+    domain = "ftp.freebsd.org"
+    path = "/pub/FreeBSD"
 
-    protocol = int(input(f'Connecting to {domain}. Which protocol to use? (0-http, 1-ftp)'))
+    protocol = int(
+        input(f"Connecting to {domain}. Which protocol to use? (0-http, 1-ftp)")
+    )
 
     match protocol:
         case 0:
-            is_secure = bool(int(input('Use secure connection? (1-yes, 0-no)')))
+            is_secure = bool(int(input("Use secure connection? (1-yes, 0-no)")))
             factory = HTTPFactory(is_secure)
             pass
         case 1:
-            is_secure = bool(int(input('Use secure connection? (1-yes, 0-no)')))
+            is_secure = bool(int(input("Use secure connection? (1-yes, 0-no)")))
             factory = FTPFactory(is_secure)
         case _:
-            raise Exception('Connector is not defined!')
+            raise Exception("Connector is not defined!")
 
     connector = Connector(factory)
     try:

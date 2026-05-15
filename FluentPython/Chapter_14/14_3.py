@@ -1,7 +1,6 @@
-
 class ArithmeticProgression:
 
-    def __init__(self, begin, step, end=None): #
+    def __init__(self, begin, step, end=None):  #
         self._begin = begin
         self._step = step
         self._end = end
@@ -17,14 +16,15 @@ class ArithmeticProgression:
 
 
 def aritprog_gen(begin, step, end=None):
-    ''' функциональая релизация '''
-    result = type(begin+step)(begin)
+    """функциональая релизация"""
+    result = type(begin + step)(begin)
     forever = end is None
     idx = 0
     while forever or result < end:
         yield result
         idx += 1
         result = begin + step * idx
+
 
 def main():
     a = ArithmeticProgression(1, 1)
@@ -33,5 +33,6 @@ def main():
     print(next(i))
     print(next(i))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

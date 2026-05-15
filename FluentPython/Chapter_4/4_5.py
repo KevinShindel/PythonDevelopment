@@ -1,6 +1,4 @@
 # кодировки по умолчанию
-import sys, locale
-
 
 expressions = """
 locale.getpreferredencoding()
@@ -18,10 +16,11 @@ sys.getfilesystemencoding()
 
 
 def main():
-    my_file = open('rammstein.txt', 'r')
+    my_file = open("rammstein.txt", "r")
     for exp in expressions.split():
         value = eval(exp)
-        print(exp.rjust(30), '->', repr(value))
+        print(exp.rjust(30), "->", repr(value))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

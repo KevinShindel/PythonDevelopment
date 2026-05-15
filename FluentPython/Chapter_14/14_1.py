@@ -4,12 +4,12 @@ from collections.abc import Iterable
 
 
 class Sentence:
-    REWORD = re.compile('\w+')
+    REWORD = re.compile("\w+")
 
     def __init__(self, text):
 
         self._text = text
-        self.words = self.REWORD.findall(text) # отдаёт список всех слов
+        self.words = self.REWORD.findall(text)  # отдаёт список всех слов
 
     @property
     def text(self):
@@ -18,17 +18,18 @@ class Sentence:
     def __getitem__(self, item):
         return self.words[item]
 
-    def __len__(self): # по требованию протокола необходим метод len
+    def __len__(self):  # по требованию протокола необходим метод len
         return len(self.words)
 
     def __repr__(self):
-        return 'Sentence(%s)' % reprlib.repr(self.text)
+        return "Sentence(%s)" % reprlib.repr(self.text)
 
 
 class Foo:
 
     def __iter__(self):  # лучше реализовывать метод __iter__
         pass
+
 
 class Iterator(Iterable):
     # Итераторы в Python следует считать не типом а протоколом.
@@ -37,22 +38,22 @@ class Iterator(Iterable):
     __slots__ = ()
 
     def __next__(self):
-        ''' Возвращает следующий доступный элемент '''
+        """Возвращает следующий доступный элемент"""
         raise StopIteration
 
     def __iter__(self):
-        ''' Возвращает self. Это позволяет использовать итератор где
-        ожидается итерируемый обьект, например в цикле for '''
+        """Возвращает self. Это позволяет использовать итератор где
+        ожидается итерируемый обьект, например в цикле for"""
         return self
 
     @classmethod
     def __subclasshook__(cls, C):
         if cls is Iterator:
-            if (any("__next__" in B.__dict__ for B in C.__mro__)
-                and
-                any("__iter__" in B.__dict__ for B in C.__mro__)):
+            if any("__next__" in B.__dict__ for B in C.__mro__) and any(
+                "__iter__" in B.__dict__ for B in C.__mro__
+            ):
                 return True
-        raise NotImplemented
+        raise NotImplementedError
 
 
 def test_range():
@@ -60,19 +61,17 @@ def test_range():
 
 
 def main():
-    s = Sentence('>>The time has come, >> the Walrus said,')
+    s = Sentence(">>The time has come, >> the Walrus said,")
     print(s)
     for w in s:
         print(w)
-    print('++++++++++++++++++++++')
-
+    print("++++++++++++++++++++++")
 
     print(issubclass(Foo, Iterable))
     print(isinstance(Foo(), Iterable))
-    print('++++++++++++++++++++++')
+    print("++++++++++++++++++++++")
 
-
-    s = 'ABC'
+    s = "ABC"
     for it in s:
         print(it)
 
@@ -83,8 +82,8 @@ def main():
         except StopIteration:
             del it
             break
-    print('++++++++++++++++++++++')
-    s3 = Sentence('Pig and Pepper')
+    print("++++++++++++++++++++++")
+    s3 = Sentence("Pig and Pepper")
     it = iter(s3)
     print(it)
     print(next(it))
@@ -92,9 +91,9 @@ def main():
     print(next(it))
 
     print(
-        list( # получаем список
-            iter( # создаём итератор
-                test_range() # используем функцию для получения генератора
+        list(  # получаем список
+            iter(  # создаём итератор
+                test_range()  # используем функцию для получения генератора
             )
         )
     )
@@ -120,7 +119,7 @@ class SentenceIterator:
 
 class Sentence3:
 
-    REWORD = re.compile('\w+')
+    REWORD = re.compile("\w+")
 
     def __init__(self, text):
 
@@ -128,14 +127,13 @@ class Sentence3:
         self.words = self.REWORD.findall(text)
 
     def __repr__(self):
-        return 'Sentence(%s)' % reprlib.repr(self._text)
+        return "Sentence(%s)" % reprlib.repr(self._text)
 
     def __iter__(self):
-        for word in self.words: # обходим self.words
-            yield word # отдаём текущее слово
-        return None # генераторная функция не возбуждает StopIteration, return показан визуального понимания
+        for word in self.words:  # обходим self.words
+            yield word  # отдаём текущее слово
+        return None  # генераторная функция не возбуждает StopIteration, return показан визуального понимания
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

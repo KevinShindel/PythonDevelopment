@@ -1,12 +1,11 @@
 # замыкания
 
-'''
+"""
 Определение замыкания
 Замыкание - это функция с расширеной областью видимости
 которая охватывает все неглобальные переменные, на которые
 есть ссылки в теле функции хотя они в нем не определены.
-'''
-
+"""
 
 # пример
 
@@ -23,14 +22,16 @@ class Averager:  # реализация на ООП
     def __call__(self, new_value, *args, **kwargs):
         self.series.append(new_value)
         total = sum(self.series)
-        return total/len(self.series)
+        return total / len(self.series)
 
 
 def make_averager():
     series = []
 
     def averager(new_value):
-        series.append(new_value) # доступ вложенной функции к внешней неглобальной переменной
+        series.append(
+            new_value
+        )  # доступ вложенной функции к внешней неглобальной переменной
         total = sum(series)
         return total / len(series)
 
@@ -47,5 +48,6 @@ def main():
     print(avg(11))
     print(avg(12))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

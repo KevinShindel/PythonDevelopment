@@ -1,6 +1,7 @@
 # хэширование и ускорение оператора ==
 
-import operator, functools
+import functools
+import operator
 
 
 class Vector:
@@ -14,7 +15,7 @@ class Vector:
 
     def __hash__(self):
         hashes = map(hash, self._components)
-        return functools.reduce(operator.xor, hashes, 0) # fn -> iterable -> initiator
+        return functools.reduce(operator.xor, hashes, 0)  # fn -> iterable -> initiator
 
 
 def main():
@@ -22,5 +23,5 @@ def main():
     print(res)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

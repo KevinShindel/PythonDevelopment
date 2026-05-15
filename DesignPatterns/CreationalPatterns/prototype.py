@@ -35,9 +35,7 @@ class SomeComponent:
 
         # Then, let's clone the object itself, using the prepared clones of the
         # nested objects.
-        new = self.__class__(
-            self.some_int, some_list_of_objects, some_circular_ref
-        )
+        new = self.__class__(self.some_int, some_list_of_objects, some_circular_ref)
         new.__dict__.update(self.__dict__)
 
         return new
@@ -63,9 +61,7 @@ class SomeComponent:
 
         # Then, let's clone the object itself, using the prepared clones of the
         # nested objects.
-        new = self.__class__(
-            self.some_int, some_list_of_objects, some_circular_ref
-        )
+        new = self.__class__(self.some_int, some_list_of_objects, some_circular_ref)
         new.__dict__ = copy.deepcopy(self.__dict__, memo)
 
         return new

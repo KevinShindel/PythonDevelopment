@@ -2,7 +2,7 @@
 
 
 def gen():
-    for c in 'AB':
+    for c in "AB":
         yield c
     for i in range(1, 3):
         yield i
@@ -19,5 +19,5 @@ def main():
     print(res)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

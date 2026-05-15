@@ -3,12 +3,13 @@ from abc import ABCMeta, abstractmethod
 
 
 class AbstractObject:
-    """ A common interface for the real and proxy objects """
+    """A common interface for the real and proxy objects"""
+
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def sort(self, reverse=False):
-        """  """
+        """ """
         pass
 
 
@@ -28,14 +29,14 @@ class Proxy(AbstractObject):
     __cached_object = None
 
     def __init__(self):
-        if not getattr(self.__class__, '__cached_object', None):
+        if not getattr(self.__class__, "__cached_object", None):
             self.__cached_object = RealSubject()
-            print('Create new instance of RealSubject')
+            print("Create new instance of RealSubject")
         else:
-            print('Use existing instance RealSubject')
+            print("Use existing instance RealSubject")
 
         self.__class__.reference_cnt += 1
-        print('Count of references: ', self.__class__.reference_cnt)
+        print("Count of references: ", self.__class__.reference_cnt)
 
     def sort(self, reverse=False):
         self.__cached_object.sort(reverse=reverse)
@@ -44,12 +45,12 @@ class Proxy(AbstractObject):
         self.__class__.reference_cnt -= 1
         if self.__class__.reference_cnt == 0:
             del self.__class__.__cached_object
-            print('Number of references objects is 0. Deleting cached object')
+            print("Number of references objects is 0. Deleting cached object")
 
-        print('Deleted object. Count of objects: ', self.__class__.reference_cnt)
+        print("Deleted object. Count of objects: ", self.__class__.reference_cnt)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     proxy1 = Proxy()
     proxy2 = Proxy()
     proxy3 = Proxy()

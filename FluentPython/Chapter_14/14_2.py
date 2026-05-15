@@ -1,28 +1,29 @@
 # как работает генераторная функция
 
-'''
+"""
 Определение генераторной функции
  - Любая функция которая возвращает значение
    с помощью слова yield называется генераторной
-'''
+"""
+
 import re
 import reprlib
 
 
-def get_123(): # функция порождает значения с помощью yield
+def get_123():  # функция порождает значения с помощью yield
     yield 1
     yield 2
     yield 3
 
 
 class Sentence4:
-    RE_WORD = re.compile(r'\w+')
+    RE_WORD = re.compile(r"\w+")
 
     def __init__(self, text):
         self._text = text  # хранить список слов не нужно
 
     def __repr__(self):
-        return 'Sentence(%s)' % reprlib.repr(self._text)
+        return "Sentence(%s)" % reprlib.repr(self._text)
 
     def __iter__(self):
         for match in self.RE_WORD.finditer(self._text):  # строит генератор совпадений
@@ -30,16 +31,18 @@ class Sentence4:
 
 
 class Sentence5:
-    RE_WORD = re.compile(r'\w+')
+    RE_WORD = re.compile(r"\w+")
 
     def __init__(self, text):
         self._text = text  # хранить список слов не нужно
 
     def __repr__(self):
-        return 'Sentence(%s)' % reprlib.repr(self._text)
+        return "Sentence(%s)" % reprlib.repr(self._text)
 
     def __iter__(self):
-        yield from [match.group() for match in self.RE_WORD.finditer(self._text)] # создаём генератор
+        yield from [
+            match.group() for match in self.RE_WORD.finditer(self._text)
+        ]  # создаём генератор
 
 
 def main():
@@ -54,14 +57,14 @@ def main():
 
     # print(next(g)) # StopIteration
 
-    s = Sentence4('Some words found in 4 here 4 now i try 5555 to check 101=23 myself')
+    s = Sentence4("Some words found in 4 here 4 now i try 5555 to check 101=23 myself")
     i = iter(s)
     print(next(i))
     print(next(i))
     print(next(i))
     print(next(i))
 
-    s = Sentence5('Some words found in 4 here 4 now i try 5555 to check 101=23 myself')
+    s = Sentence5("Some words found in 4 here 4 now i try 5555 to check 101=23 myself")
     i = iter(s)
     print(next(i))
     print(next(i))
@@ -72,6 +75,5 @@ def main():
     print(next(i))
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -2,12 +2,12 @@
 import collections
 import random
 
-Card = collections.namedtuple('Card', ['rank', 'suit'])
+Card = collections.namedtuple("Card", ["rank", "suit"])
 
 
 class FrenchDesk:
-    ranks = [str(n) for n in range(2, 11)] + list('JQKA')
-    suit = 'spades diamonds clubs hearts'.split()
+    ranks = [str(n) for n in range(2, 11)] + list("JQKA")
+    suit = "spades diamonds clubs hearts".split()
 
     def __init__(self):
         self._cards = [Card(rank, suit) for suit in self.suit for rank in self.ranks]
@@ -16,11 +16,11 @@ class FrenchDesk:
         return len(self._cards)
 
     def __getitem__(self, item):
-        ''' метод получения обьекта '''
+        """метод получения обьекта"""
         return self._cards[item]
 
     def __setitem__(self, key, value):
-        ''' метод изменения обекта '''
+        """метод изменения обекта"""
         self._cards[key] = value
 
 
@@ -31,6 +31,5 @@ def main():
     random.shuffle(fd)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

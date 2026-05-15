@@ -1,6 +1,6 @@
 # Simple fabric pattern
-from http.client import HTTPConnection
 from ftplib import FTP as FTPConnection
+from http.client import HTTPConnection
 
 
 class SimpleFactory:
@@ -8,14 +8,14 @@ class SimpleFactory:
     @staticmethod
     def build_connection(protocol):
         match protocol:
-            case 'http':
+            case "http":
                 return HTTPConnection()
-            case 'ftp':
+            case "ftp":
                 return FTPConnection()
 
 
-if __name__ == '__main__':
-    protocol = input('Select protocol (http, ftp): ')
+if __name__ == "__main__":
+    protocol = input("Select protocol (http, ftp): ")
     protocol = SimpleFactory.build_connection(protocol)
     protocol.connect()
     print(protocol.getresponse())

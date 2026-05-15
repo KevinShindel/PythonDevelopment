@@ -1,12 +1,13 @@
 # хэшируемый класс
 
+
 class Vector2D:
 
     def __init__(self, x, y):
-        self.__x = float(x) # делаем все переменные защищенными
+        self.__x = float(x)  # делаем все переменные защищенными
         self.__y = float(y)
 
-    @property # создаём метод для чтения
+    @property  # создаём метод для чтения
     def x(self):
         return self.__x
 
@@ -17,7 +18,7 @@ class Vector2D:
     def __iter__(self):
         return (i for i in (self.x, self.y))
 
-    def __hash__(self): # оверрайдим метод __hash__
+    def __hash__(self):  # оверрайдим метод __hash__
         return hash(self.x) ^ hash(self.y)
 
 
@@ -30,6 +31,5 @@ def main():
     print(h, h2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

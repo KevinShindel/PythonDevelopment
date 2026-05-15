@@ -1,4 +1,3 @@
-
 class Borg:
     __shared_state = {}
 
@@ -18,5 +17,5 @@ def main():
     assert original_instance is not new_one
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -9,7 +9,7 @@ from collections import namedtuple
 алгоритм независимо от использующих его клиентов.
 """
 
-Customer = namedtuple('Customer', 'name fidelity')
+Customer = namedtuple("Customer", "name fidelity")
 
 
 class LineItem:
@@ -24,29 +24,31 @@ class LineItem:
 
 
 class Promotion(ABC):
-    '''
+    """
     Стратегия
     Интерфейс обищй для всех компонентов реализующих разнчыне алгоритмы.
-    '''
+    """
 
     @abstractmethod
     def discount(self, order):
-        """ вернуть скидку в виде положительной сумы в долларах """
+        """вернуть скидку в виде положительной сумы в долларах"""
 
 
 class Order:
-    '''
+    """
     Контекст
     Предоставляет службу делегируя часть вычислений взаимозаменяемым компонентам реализующим различные алгоритмы
-    '''
+    """
 
-    def __init__(self, customer: Customer, cart: [LineItem], promotion: Promotion = None):
+    def __init__(
+        self, customer: Customer, cart: [LineItem], promotion: Promotion = None
+    ):
         self.customer = customer
         self.cart = cart
         self.promotion = promotion
 
     def total(self):
-        if not hasattr(self, '__total'):
+        if not hasattr(self, "__total"):
             self.__total = sum(item.total() for item in self.cart)
         return self.__total
 
@@ -58,7 +60,7 @@ class Order:
         return self.__total - discount
 
     def __repr__(self):
-        fmt = '<Order total: {:.2f} due: {:.2f} discount: {:.2f}>'
+        fmt = "<Order total: {:.2f} due: {:.2f} discount: {:.2f}>"
         return fmt.format(self.total(), self.due(), self.total() - self.due())
 
 
@@ -87,10 +89,10 @@ class BulkItemPromo(Promotion):
 
 
 class LargeOrderPromo(Promotion):
-    '''
+    """
     Конкретная стратегия
     7-ми % скидка для заказчиков, включащих не менее 10 различных позиций
-    '''
+    """
 
     def discount(self, order):
         distinct_items = {item.product for item in order.cart}
@@ -101,19 +103,21 @@ class LargeOrderPromo(Promotion):
 
 
 def main():
-    joe = Customer('John Doe', 0)
-    ann = Customer('Anna Smith', 1100)
-    cart = [LineItem('banana', 4, 0.5), LineItem('apple', 10, 1.5), LineItem('watermelon', 5, 5)]
+    joe = Customer("John Doe", 0)
+    ann = Customer("Anna Smith", 1100)
+    cart = [
+        LineItem("banana", 4, 0.5),
+        LineItem("apple", 10, 1.5),
+        LineItem("watermelon", 5, 5),
+    ]
     discount = Order(joe, cart, FidelityPromo())
     print(discount)
     discount = Order(ann, cart, FidelityPromo())
     print(discount)
-    banana_cart = [LineItem('banana', 30, 0.5), LineItem('apple', 10, 1.5)]
+    banana_cart = [LineItem("banana", 30, 0.5), LineItem("apple", 10, 1.5)]
     discount = Order(joe, banana_cart, BulkItemPromo())
     print(discount)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-
-

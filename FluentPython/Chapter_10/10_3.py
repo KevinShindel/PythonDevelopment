@@ -1,7 +1,8 @@
 # Доступ к динамическим атрибутам
 
+
 class Vector:
-    shortcut_names = 'xyzt'
+    shortcut_names = "xyzt"
 
     def __init__(self, components):
         self.c_omponents = components
@@ -12,7 +13,7 @@ class Vector:
             pos = cls.shortcut_names.find(name)
             if 0 <= pos <= len(self._components):
                 return self._components[pos]
-        msg = '{.__name__!r} object has not attribute {!r}'
+        msg = "{.__name__!r} object has not attribute {!r}"
         raise AttributeError(msg.format(cls, name))
 
     def __setattr__(self, key, value):
@@ -20,9 +21,9 @@ class Vector:
         error = None
         if len(name) == 1:
             if name in cls.shortcut_names:
-                error = 'read-only attrs {attr_name!r}'
+                error = "read-only attrs {attr_name!r}"
             elif name.islower():
-                error = 'can\'t set attrs \'a\' to \'z\' in {cls_name!r}'
+                error = "can't set attrs 'a' to 'z' in {cls_name!r}"
             if error:
                 msg = error.format(cls_name=cls.__name__, attr_name=name)
                 raise AttributeError(msg)

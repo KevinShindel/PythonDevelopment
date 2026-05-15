@@ -1,13 +1,14 @@
 # от обратных вызовов к будущим объектам и сопрограмам
 import asyncio
 
-#JS style
+# JS style
 
 # func api_call1(request1, (response1)=> {
 #     var request2 = step(response1);
 # })
 
 # Python function style
+
 
 def stage1(response1):
     request2 = step1(response1)
@@ -21,6 +22,7 @@ def stage2(response2):
 
 def stage3(response3):
     step3(response3)
+
 
 api_call(reqest, stage1)
 
@@ -38,4 +40,4 @@ def three_stages(request1):
 
 def run_loop():
     loop = asyncio.get_event_loop()
-    loop.create_task(three_stages(request1)) # запланировать выполнение сопрограммы
+    loop.create_task(three_stages(request1))  # запланировать выполнение сопрограммы
