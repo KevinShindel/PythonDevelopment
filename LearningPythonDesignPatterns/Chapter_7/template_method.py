@@ -45,7 +45,7 @@ class YahooParser(AbstractNewsParser):
         parsed_content = []
 
         dom = minidom.parseString(raw_content)
-        for node in dom.getElementByTagName('item'):
+        for node in dom.getElementsByTagName('item'):
             parsed_item = {}
 
             try:
