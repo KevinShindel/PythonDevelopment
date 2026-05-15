@@ -1,15 +1,15 @@
 # применение динамическиъ атрибутов для обработки данных
+import datetime
+import json
 import keyword
+import os
+import warnings
 from collections import Mapping, MutableSequence
 from urllib.request import urlopen
-import warnings
-import os
-import json
-import datetime
 
-URL = 'https://jsonplaceholder.typicode.com/users'
+URL = "https://jsonplaceholder.typicode.com/users"
 # JSON = 'users-sample.json'
-JSON = 'osconfeed-sample.json'
+JSON = "osconfeed-sample.json"
 
 
 def load() -> dict:
@@ -23,15 +23,15 @@ def load() -> dict:
         file_is_updated = modified_date == today_date
 
     if not file_exist or not file_is_updated:
-        msg = 'downloading {} to {}'.format(URL, JSON)
+        msg = "downloading {} to {}".format(URL, JSON)
         warnings.warn(msg)
-        with urlopen(url=URL) as remote, open(JSON, 'wb') as handler:
+        with urlopen(url=URL) as remote, open(JSON, "wb") as handler:
             handler.write(remote.read())
 
         with open(JSON) as handler:
             return json.load(handler)
     else:
-        msg = 'data is present, skip task'
+        msg = "data is present, skip task"
         warnings.warn(msg)
         return {}
 
@@ -45,8 +45,8 @@ class FrozenJSON:
             self.__data = dict(mapping)
 
         for key, value in self.__data.copy().items():
-            if keyword.iskeyword(key): # проверка на зарезервированое слово (class...)
-                key += '_'
+            if keyword.iskeyword(key):  # проверка на зарезервированое слово (class...)
+                key += "_"
             self.__data[key] = value
 
     def __getattr__(self, item):
@@ -75,9 +75,9 @@ def main():
         print(len(feed))
         pk, name = feed.id, feed.name
         print(pk, name)
-        grad = FrozenJSON({'name': 'jim bo', 'class': 1982})
+        grad = FrozenJSON({"name": "jim bo", "class": 1982})
         print(grad.class_)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

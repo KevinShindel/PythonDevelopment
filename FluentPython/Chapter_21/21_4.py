@@ -8,16 +8,18 @@ class EntityMeta(type):
 
     @classmethod
     def __prepare__(cls, name, bases):
-        return collections.OrderedDict() # возвращаем пустой экземляр в кором будут хранится атрибуты класса
+        return (
+            collections.OrderedDict()
+        )  # возвращаем пустой экземляр в кором будут хранится атрибуты класса
 
     def __init__(cls, name, bases, attr_dict):
         super().__init__(name, bases, attr_dict)
-        cls._field_names = [] # создаём атрибут в конструкторе класса
-        for key, attr in attr_dict.items(): # attr_dict <-- экземрял класса OrderedDict
+        cls._field_names = []  # создаём атрибут в конструкторе класса
+        for key, attr in attr_dict.items():  # attr_dict <-- экземрял класса OrderedDict
             if isinstance(attr, model.Validated):
                 type_name = type(attr).__name__
-                attr.storage_name = '_{}#{}'.format(type_name, key)
-                cls._field_names.append(key) # помещаем поля
+                attr.storage_name = "_{}#{}".format(type_name, key)
+                cls._field_names.append(key)  # помещаем поля
 
 
 class Entity(metaclass=EntityMeta):
@@ -46,5 +48,5 @@ def main():
         print(name)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

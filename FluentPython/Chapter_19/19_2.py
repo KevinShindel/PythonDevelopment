@@ -1,6 +1,6 @@
 # гибкое создание объектов с помощью метода new
 import keyword
-from collections import MutableSequence, Mapping
+from collections import Mapping, MutableSequence
 
 
 class Foo:
@@ -29,8 +29,8 @@ class FrozenJSON:
     def __init__(self, mapping):
         self.__data = {}
         for key, value in mapping.items():
-            if keyword.iskeyword(key): # проверка на зарезервированое слово (class...)
-                key += '_'
+            if keyword.iskeyword(key):  # проверка на зарезервированое слово (class...)
+                key += "_"
             self.__data[key] = value
 
     def __getattr__(self, item):
@@ -53,12 +53,11 @@ class FrozenJSON:
 
 
 def main():
-    x = Foo('bar')
+    x = Foo("bar")
     print(x)
-    x = object_maker(Foo, 'bar')
+    x = object_maker(Foo, "bar")
     print(x)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

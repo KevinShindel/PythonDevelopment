@@ -14,15 +14,21 @@ def main():
     sig = signature(clip)  # созадём сигнатуру
     print(sig)
     print(str(sig))
-    for name, param in sig.parameters.items(): # итерируем аргументы метода
-        print(param.kind, ':', name, '=', param.default)
+    for name, param in sig.parameters.items():  # итерируем аргументы метода
+        print(param.kind, ":", name, "=", param.default)
 
-    sig = signature(tag) # создаём сигнатуру функции
-    my_tag = {'name': 'img', 'title': 'Sunset Boulevard', 'src': 'sunset.jpeg', 'cls': 'framed'} # создаём словарь аргументов
-    bound_args = sig.bind(**my_tag) # <BoundArguments (name='img', cls='framed', kwargs={'title': 'Sunset Boulevard', 'src': 'sunset.jpeg'})> # байндим аргументы в сигнатуру
+    sig = signature(tag)  # создаём сигнатуру функции
+    my_tag = {
+        "name": "img",
+        "title": "Sunset Boulevard",
+        "src": "sunset.jpeg",
+        "cls": "framed",
+    }  # создаём словарь аргументов
+    bound_args = sig.bind(
+        **my_tag
+    )  # <BoundArguments (name='img', cls='framed', kwargs={'title': 'Sunset Boulevard', 'src': 'sunset.jpeg'})> # байндим аргументы в сигнатуру
     print(bound_args)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

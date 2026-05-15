@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import List
 
@@ -80,7 +81,9 @@ visitor's methods over various objects of the structure.
 
 class ConcreteVisitor1(Visitor):
     def visit_concrete_component_a(self, element) -> None:
-        print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor1")
+        print(
+            f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor1"
+        )
 
     def visit_concrete_component_b(self, element) -> None:
         print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor1")
@@ -88,7 +91,9 @@ class ConcreteVisitor1(Visitor):
 
 class ConcreteVisitor2(Visitor):
     def visit_concrete_component_a(self, element) -> None:
-        print(f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor2")
+        print(
+            f"{element.exclusive_method_of_concrete_component_a()} + ConcreteVisitor2"
+        )
 
     def visit_concrete_component_b(self, element) -> None:
         print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor2")

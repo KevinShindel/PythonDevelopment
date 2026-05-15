@@ -1,6 +1,6 @@
 # метапрограммирование
 
-'''
+"""
 Метапрограммирование - создание или настройки классов во время
 выполнения
 
@@ -11,13 +11,13 @@
  - обьектно-реляционное отображение
  - постоянное хранение обьектов
  - динамическая трансляция струкрур классов с других языков
-'''
+"""
 
 
 # фабрика классов
 def record_factory(cls_name, field_names):
     try:
-        field_names = field_names.replace(',', ' ').split()  # <1>
+        field_names = field_names.replace(",", " ").split()  # <1>
     except AttributeError:  # no .replace or .split
         pass  # assume it's already a sequence of identifiers
     field_names = tuple(field_names)  # <2>
@@ -33,23 +33,24 @@ def record_factory(cls_name, field_names):
             yield getattr(self, name)
 
     def __repr__(self):  # <5>
-        values = ', '.join('{}={!r}'.format(*i) for i
-                           in zip(self.__slots__, self))
-        return '{}({})'.format(self.__class__.__name__, values)
+        values = ", ".join("{}={!r}".format(*i) for i in zip(self.__slots__, self))
+        return "{}({})".format(self.__class__.__name__, values)
 
-    cls_attrs = dict(__slots__=field_names,  # <6>
-                     __init__=__init__,
-                     __iter__=__iter__,
-                     __repr__=__repr__)
+    cls_attrs = dict(
+        __slots__=field_names,  # <6>
+        __init__=__init__,
+        __iter__=__iter__,
+        __repr__=__repr__,
+    )
 
     return type(cls_name, (object,), cls_attrs)  # <7>
 
 
 def main():
-    dog_cls = record_factory('Dog', 'name weight owner')
+    dog_cls = record_factory("Dog", "name weight owner")
     print(dog_cls.__dict__)
-    dog_cls(name='Richard', weight=30)
+    dog_cls(name="Richard", weight=30)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

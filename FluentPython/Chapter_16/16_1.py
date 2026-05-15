@@ -3,24 +3,22 @@
 import inspect
 
 
-def simple_coroutine(): # сопрограмма объяляется также как обычная функция
-    print('--> coroutine started')
-    x = yield # yield используется в выражении присваивания
-    print('--> coroutine recived', x)
+def simple_coroutine():  # сопрограмма объяляется также как обычная функция
+    print("--> coroutine started")
+    x = yield  # yield используется в выражении присваивания
+    print("--> coroutine recived", x)
 
 
 def simple_coro2(a):
-    print('--> Started: a=', a)
+    print("--> Started: a=", a)
     b = yield a
-    print('--> Recieved: b=', b)
+    print("--> Recieved: b=", b)
     c = yield a + b
-    print('--> Recieved: c=', c)
-
-
+    print("--> Recieved: c=", c)
 
 
 def main():
-    my_coro = simple_coroutine() # вызываем функцию что бы получить генератор
+    my_coro = simple_coroutine()  # вызываем функцию что бы получить генератор
     status = inspect.getgeneratorstate(my_coro)
     print(status)
     print(next(my_coro))  # мы не можем ему послать данные пока он не достиг yield
@@ -41,14 +39,12 @@ def main():
     print(status)
     my_coro.send(14)
     my_coro.send(28)
-    my_coro.send(99) # StopIteration
+    my_coro.send(99)  # StopIteration
     status = inspect.getgeneratorstate(my_coro)
     print(status)
 
 
-
-
-'''
+"""
 Сопрограмма может находится в одном из 4х состояний, узнать это можно 
 с помощью функции inspect.getgeneratorstate()
 'GEN_CREATED' --> Ожидает выполенния
@@ -56,8 +52,8 @@ def main():
 'GEN_SUSPENDED' --> Приостановлено в выражении yield
 'GEN_CLOSED' --> Выполнено
  
-'''
+"""
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

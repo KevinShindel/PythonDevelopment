@@ -1,14 +1,14 @@
 # изменение структуры набора данных с помощью shelve
+import datetime
+import json
+import os
 import shelve
 import warnings
-import os
-import datetime
 from urllib.request import urlopen
-import json
 
-URL = 'https://raw.githubusercontent.com/fluentpython/example-code/master/19-dyn-attr-prop/oscon/data/osconfeed.json'
+URL = "https://raw.githubusercontent.com/fluentpython/example-code/master/19-dyn-attr-prop/oscon/data/osconfeed.json"
 # JSON = 'users-sample.json'
-JSON = 'osconfeed-sample.json'
+JSON = "osconfeed-sample.json"
 
 
 def load() -> dict:
@@ -22,19 +22,19 @@ def load() -> dict:
         file_is_updated = modified_date == today_date
 
     if not file_exist or not file_is_updated:
-        msg = 'downloading {} to {}'.format(URL, JSON)
+        msg = "downloading {} to {}".format(URL, JSON)
         warnings.warn(msg)
-        with urlopen(url=URL) as remote, open(JSON, 'wb') as handler:
+        with urlopen(url=URL) as remote, open(JSON, "wb") as handler:
             handler.write(remote.read())
     else:
-        msg = 'data is present, skip task'
+        msg = "data is present, skip task"
         warnings.warn(msg)
 
     with open(JSON) as handler:
         return json.load(handler)
 
 
-DB_NAME = 'schedule.db'
+DB_NAME = "schedule.db"
 
 
 class Record:
@@ -45,12 +45,12 @@ class Record:
 
 def load_db(db):
     raw_data = load()
-    warnings.warn('loading ' + DB_NAME)
-    for collection, rec_list in raw_data['Schedule'].items():
+    warnings.warn("loading " + DB_NAME)
+    for collection, rec_list in raw_data["Schedule"].items():
         record_type = collection[:-1]
         for record in rec_list:
-            key ='{}.{}'.format(record_type, record['serial'])
-            record['serial'] = key
+            key = "{}.{}".format(record_type, record["serial"])
+            record["serial"] = key
             db[key] = Record(**record)
 
 
@@ -58,5 +58,6 @@ def main():
     db = shelve.open(DB_NAME)
     load_db(db=db)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

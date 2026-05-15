@@ -2,8 +2,8 @@ import struct
 
 
 def main():
-    fmt = '<3s3sHH'
-    with open('filter.gif', 'rb') as fb:
+    fmt = "<3s3sHH"
+    with open("filter.gif", "rb") as fb:
         img = memoryview(fb.read())
     header = img[:10]
     b = bytes(header)
@@ -12,5 +12,5 @@ def main():
     del header, img
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

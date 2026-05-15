@@ -18,12 +18,12 @@ class LineItem:
 
 
 def main():
-    raisins = LineItem('Golden raisins', 10, 6.95)
+    raisins = LineItem("Golden raisins", 10, 6.95)
     print(dir(raisins)[:3])
     print(LineItem.description.storage_name)
     print(raisins.description)
-    print(getattr(raisins, '_NonBlank#description'))
+    print(getattr(raisins, "_NonBlank#description"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

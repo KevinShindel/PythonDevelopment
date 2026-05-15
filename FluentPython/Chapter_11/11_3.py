@@ -1,8 +1,7 @@
 # ABC в стандартной библиотеке
-from abc import ABC
 from collections.abc import *
 
-'''
+"""
 Iterable, Container, Sized
 класс Iterable поддерживает итерирование методом __iter__
 класс Container поддерживает  оператор in методом __contains__
@@ -21,4 +20,4 @@ Callable, Hashable
 
 Iterator
 является подклассом Iterable 
-'''
+"""

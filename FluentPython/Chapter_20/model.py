@@ -8,7 +8,7 @@ class AutoStorage:
         cls = self.__class__
         prefix = cls.__name__
         index = cls.__counter
-        self.storage_name = '_{}#{}'.format(prefix, index)
+        self.storage_name = "_{}#{}".format(prefix, index)
         cls.__counter += 1
 
     def __get__(self, instance, owner):
@@ -36,7 +36,7 @@ class Quantity(Validated):
 
     def validate(self, instance, value):
         if value <= 0:
-            raise ValueError('Value must be > 0')
+            raise ValueError("Value must be > 0")
         else:
             return value
 
@@ -46,7 +46,7 @@ class NonBlank(Validated):
     def validate(self, instance, value):
         value = value.strip()
         if len(value) == 0:
-            raise ValueError('value cannot be empty or blank')
+            raise ValueError("value cannot be empty or blank")
         else:
             return value
 
@@ -69,5 +69,5 @@ def entity(cls):
     for key, attr in cls.__dict__.items():
         if isinstance(attr, Validated):
             type_name = type(attr).__name__
-            attr.storage_name = '_{}#{}'.format(type_name, key)
+            attr.storage_name = "_{}#{}".format(type_name, key)
     return cls

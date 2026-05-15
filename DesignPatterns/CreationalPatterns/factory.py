@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 
@@ -90,8 +91,11 @@ def client_code(creator: Creator) -> None:
     the base interface, you can pass it any creator's subclass.
     """
 
-    print(f"Client: I'm not aware of the creator's class, but it still works.\n"
-          f"{creator.some_operation()}", end="")
+    print(
+        f"Client: I'm not aware of the creator's class, but it still works.\n"
+        f"{creator.some_operation()}",
+        end="",
+    )
 
 
 if __name__ == "__main__":

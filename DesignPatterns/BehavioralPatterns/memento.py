@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from datetime import datetime
 from random import sample
@@ -90,7 +91,7 @@ class ConcreteMemento(Memento):
         return self._date
 
 
-class Caretaker():
+class Caretaker:
     """
     The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
     doesn't have access to the originator's state, stored inside the memento. It

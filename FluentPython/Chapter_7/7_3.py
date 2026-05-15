@@ -1,6 +1,6 @@
 # Паттерн стратегия дополненый декоратором
 
-promos = [] # Вначале список пуст
+promos = []  # Вначале список пуст
 
 
 def promotion(promo_func):  # декоратор добавляет функции в общий список
@@ -32,4 +32,3 @@ def large_order_promo(order):
 
 def best_promo(order):  # на момент вызова список с функциями уже будет готов
     return max(promo(order) for promo in promos)
-

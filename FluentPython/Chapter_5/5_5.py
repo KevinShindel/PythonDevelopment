@@ -1,11 +1,11 @@
 # инроспекция функций
 def factorian(n):
-    ''' :return n'''
-    return 1 if n < 2 else n * factorian(n-1)
+    """:return n"""
+    return 1 if n < 2 else n * factorian(n - 1)
 
 
 def main():
-    ''' просмотреть все доступные методы '''
+    """просмотреть все доступные методы"""
     print(dir(factorian))
     print(factorian.__qualname__)
     # __dict__ -> хранятся ассоциированые пользовательские данные ( аннотации )
@@ -16,5 +16,5 @@ def main():
     # __qualname__ -> полное имя функции ( включает класс и метод класса )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

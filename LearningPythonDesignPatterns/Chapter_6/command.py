@@ -6,26 +6,26 @@ class Command(ABC):
 
     @abstractmethod
     def execute(self):
-        """ method for execute command """
+        """method for execute command"""
         pass
 
     @abstractmethod
     def undo(self):
-        """ method for undo command """
+        """method for undo command"""
         pass
 
 
 class LsReceiver:
     @staticmethod
     def show_current_dir():
-        cur_dir = '/'
+        cur_dir = "/"
         filenames = []
         for filename in os.listdir(cur_dir):
             if os.path.isfile(filename):
                 filenames.append(filename)
 
         # return filenames
-        print('Content of dir: ', os.path.join(*filenames))
+        print("Content of dir: ", os.path.join(*filenames))
 
 
 class LsCommand(Command):
@@ -46,8 +46,8 @@ class TouchReceiver:
         self.filename = filename
 
     def create_file(self):
-        """ python implementation touch Linux """
-        with open(self.filename, 'a'):
+        """python implementation touch Linux"""
+        with open(self.filename, "a"):
             os.utime(self.filename, None)
 
     def delete_file(self):
@@ -73,7 +73,7 @@ class RmReceiver:
         self.backup_name = None
 
     def delete_file(self):
-        self.backup_name = '.' + self.filename
+        self.backup_name = "." + self.filename
 
         os.rename(self.filename, self.backup_name)
 
@@ -103,35 +103,35 @@ class Invoker:
         self.history = []
 
     def create_file(self):
-        print('create file ...')
+        print("create file ...")
         for command in self.create_file_commands:
             command.execute()
             self.history.append(command)
 
-        print('file created \n')
+        print("file created \n")
 
     def delete_file(self):
-        print('deleting file')
+        print("deleting file")
         for command in self.delete_file_commands:
             command.execute()
             self.history.append(command)
-        print('file deleted \n')
+        print("file deleted \n")
 
     def undo_all(self):
-        print('undo all..')
+        print("undo all..")
         for command in reversed(self.history):
             command.undo()
-        print('undo all finished')
+        print("undo all finished")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     ls_receiver = LsReceiver()
     ls_command = LsCommand(ls_receiver)
 
-    touch_receiver = TouchReceiver('test_file')
+    touch_receiver = TouchReceiver("test_file")
     touch_command = TouchCommand(touch_receiver)
 
-    rm_receiver = RmReceiver('test_file')
+    rm_receiver = RmReceiver("test_file")
     rm_command = RmCommand(rm_receiver)
 
     create_file_commands = [ls_command, touch_command, ls_command]

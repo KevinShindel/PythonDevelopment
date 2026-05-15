@@ -2,10 +2,10 @@
 
 
 class Singleton:
-    ''' classic singleton class '''
+    """classic singleton class"""
 
     def __new__(cls, *args, **kwargs):
-        if not hasattr(cls, 'instance'):
+        if not hasattr(cls, "instance"):
             cls.instance = super().__new__(cls)
         return cls.instance
 
@@ -18,7 +18,7 @@ def main():
 
     # check original instance with new one
     original_instance = Singleton()
-    original_instance.msg = 'some message'
+    original_instance.msg = "some message"
     new_instance = Singleton()
 
     print(new_instance.msg)
@@ -31,5 +31,5 @@ def main():
     print(child_instance.msg)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

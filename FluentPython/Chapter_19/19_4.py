@@ -1,5 +1,6 @@
 # использование свойств для контроля атрибутов
 
+
 class LineItem:
     def __init__(self, desc, weight, price):
         self.desc = desc
@@ -10,28 +11,30 @@ class LineItem:
         return self.weight * self.price
 
     @property  # декоратором указывается метод для чтения
-    def weight(self):  # имя атрибута реализующего свойство совпадает с иминем открытого атрибута
+    def weight(
+        self,
+    ):  # имя атрибута реализующего свойство совпадает с иминем открытого атрибута
         return self.__weight  # фактическое значение будет хранится в закрытом атрибуте
 
     @weight.setter  # декоратор для установки значения
     def weight(self, value):
         if value > 0:
-            self.__weight = value # если значение больше нуля присваиваем его закрытому атрибуту
+            self.__weight = (
+                value  # если значение больше нуля присваиваем его закрытому атрибуту
+            )
         else:
-            raise ValueError('Value must be > 0') # иначе созбуждаем исключение
+            raise ValueError("Value must be > 0")  # иначе созбуждаем исключение
 
 
 def main():
-    raisins = LineItem('Golden raisins', 10, 6.95)
+    raisins = LineItem("Golden raisins", 10, 6.95)
     total = raisins.subtotal()
     print(total)
 
-    raisins = LineItem('Golden raisins', -10, 6.95)
+    raisins = LineItem("Golden raisins", -10, 6.95)
     total = raisins.subtotal()
     print(total)
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
