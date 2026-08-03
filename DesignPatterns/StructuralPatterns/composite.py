@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import List
 
 
 class Component(ABC):
@@ -57,7 +56,6 @@ class Component(ABC):
         "abstract").
         """
 
-        pass
 
 
 class Leaf(Component):
@@ -81,7 +79,7 @@ class Composite(Component):
     """
 
     def __init__(self) -> None:
-        self._children: List[Component] = []
+        self._children: list[Component] = []
 
     """
     A composite object can add or remove other components (both simple or

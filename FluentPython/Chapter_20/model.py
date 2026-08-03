@@ -8,7 +8,7 @@ class AutoStorage:
         cls = self.__class__
         prefix = cls.__name__
         index = cls.__counter
-        self.storage_name = "_{}#{}".format(prefix, index)
+        self.storage_name = f"_{prefix}#{index}"
         cls.__counter += 1
 
     def __get__(self, instance, owner):
@@ -69,5 +69,5 @@ def entity(cls):
     for key, attr in cls.__dict__.items():
         if isinstance(attr, Validated):
             type_name = type(attr).__name__
-            attr.storage_name = "_{}#{}".format(type_name, key)
+            attr.storage_name = f"_{type_name}#{key}"
     return cls

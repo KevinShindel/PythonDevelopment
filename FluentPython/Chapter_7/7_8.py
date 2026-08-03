@@ -19,12 +19,12 @@ def htmlize2(obj):
 @htmlize2.register(str)  # специализированая функция регистрирует тип значений
 def _(text):  # имена функций не существенны и могут быть произвольно именованы
     content = html.escape(text).replace("\n", "<br />\n")
-    return "<p>{0}</p>".format(content)
+    return f"<p>{content}</p>"
 
 
 @htmlize2.register(Integral)  # регистрация типов данных int
 def _(n):
-    return "<pre>{0} (0x{0:x})</pre>".format(n)
+    return f"<pre>{n} (0x{n:x})</pre>"
 
 
 @htmlize2.register(

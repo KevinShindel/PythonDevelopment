@@ -74,7 +74,7 @@ if __name__ == "__main__":
     real_subject = RealSubject()
     client_code(real_subject)
 
-    print("")
+    print()
 
     print("Client: Executing the same client code with a proxy:")
     proxy = Proxy(real_subject)

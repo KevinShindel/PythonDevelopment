@@ -128,7 +128,6 @@ class Connector:
     @abc.abstractmethod
     def parse(self, content):
         """parses web content"""
-        pass
 
     def read(self, host, path):
         """A generic method for all subclasses, read web content"""
@@ -149,7 +148,6 @@ if __name__ == "__main__":
         case 0:
             is_secure = bool(int(input("Use secure connection? (1-yes, 0-no)")))
             factory = HTTPFactory(is_secure)
-            pass
         case 1:
             is_secure = bool(int(input("Use secure connection? (1-yes, 0-no)")))
             factory = FTPFactory(is_secure)

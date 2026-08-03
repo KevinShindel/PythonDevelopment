@@ -17,7 +17,7 @@ def main(address="127.0.0.1", port=2323):  # функцию можно вызв�
         server_coro
     )  # управляя сопрограммой получаем обьект server
     host = server.sockets[0].getsockname()  # получаем адресс и порт сервера
-    print("Serving on {}. Hit CTRL-C to stop.".format(host))
+    print(f"Serving on {host}. Hit CTRL-C to stop.")
     try:
         loop.run_forever()  # выполняем цикл обработки событий
     except KeyboardInterrupt:

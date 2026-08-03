@@ -9,7 +9,7 @@ class EntityMeta(type):
         for key, attr in cls.__dict__.items():
             if isinstance(attr, model.Validated):
                 type_name = type(attr).__name__
-                attr.storage_name = "_{}#{}".format(type_name, key)
+                attr.storage_name = f"_{type_name}#{key}"
 
 
 class LineItem(metaclass=EntityMeta):

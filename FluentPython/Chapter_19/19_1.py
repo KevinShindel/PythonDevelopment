@@ -4,7 +4,7 @@ import json
 import keyword
 import os
 import warnings
-from collections import Mapping, MutableSequence
+from collections.abc import Mapping, MutableSequence
 from urllib.request import urlopen
 
 URL = "https://jsonplaceholder.typicode.com/users"
@@ -23,7 +23,7 @@ def load() -> dict:
         file_is_updated = modified_date == today_date
 
     if not file_exist or not file_is_updated:
-        msg = "downloading {} to {}".format(URL, JSON)
+        msg = f"downloading {URL} to {JSON}"
         warnings.warn(msg)
         with urlopen(url=URL) as remote, open(JSON, "wb") as handler:
             handler.write(remote.read())

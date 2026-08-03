@@ -10,11 +10,11 @@ def set_example():
     s = set(l)
     print(s)
     # set building example
-    a = {1, 1, 2, 2, 3, 3, 4}
+    a = {1, 2, 3, 4}
     b = set([1, 2, 3, 4, 4, 5, 6])
     a.add(6)
     print(a, b)
-    c = frozenset({1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8})
+    c = frozenset({1, 2, 3, 4, 5, 6, 7, 8})
     print(c)
 
     print(c)

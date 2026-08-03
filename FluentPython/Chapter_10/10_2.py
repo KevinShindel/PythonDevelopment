@@ -7,7 +7,7 @@ Card = collections.namedtuple("Card", ["rank", "suit"])
 
 class FrenchDesk:
     ranks = [str(n) for n in range(2, 11)] + list("JQKA")
-    suit = "spades diamonds clubs hearts".split()
+    suit = ["spades", "diamonds", "clubs", "hearts"]
 
     def __init__(self):
         self._cards = [Card(rank, suit) for suit in self.suit for rank in self.ranks]

@@ -18,7 +18,7 @@ class EntityMeta(type):
         for key, attr in attr_dict.items():  # attr_dict <-- экземрял класса OrderedDict
             if isinstance(attr, model.Validated):
                 type_name = type(attr).__name__
-                attr.storage_name = "_{}#{}".format(type_name, key)
+                attr.storage_name = f"_{type_name}#{key}"
                 cls._field_names.append(key)  # помещаем поля
 
 

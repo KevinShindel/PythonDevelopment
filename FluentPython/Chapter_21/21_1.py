@@ -34,7 +34,7 @@ def record_factory(cls_name, field_names):
 
     def __repr__(self):  # <5>
         values = ", ".join("{}={!r}".format(*i) for i in zip(self.__slots__, self))
-        return "{}({})".format(self.__class__.__name__, values)
+        return f"{self.__class__.__name__}({values})"
 
     cls_attrs = dict(
         __slots__=field_names,  # <6>

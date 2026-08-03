@@ -14,8 +14,8 @@ def main():
             (
                 "re_dig" if re_digit.match(char) else "-".center(6)
             ),  # соотв. регулярному выражению?
-            "isdig" if char.isdigit() else "-".center(6),  #
-            "isnum" if char.isnumeric() else "-",  #
+            "isdig" if char.isdigit() else "-".center(6),
+            "isnum" if char.isnumeric() else "-",
             format(unicodedata.numeric(char), "5.2f"),  # выражение в числовом значении
             unicodedata.name(char),  # имя символа Unicode
             sep="\t",

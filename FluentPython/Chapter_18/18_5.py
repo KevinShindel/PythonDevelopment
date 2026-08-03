@@ -53,7 +53,7 @@ def download_one(cc, base_url, semaphore):
         raise FetchError(cc) from Err
     else:
         country = country.replace(" ", "_")
-        filename = "{}-{}.gif".format(country, cc)
+        filename = f"{country}-{cc}.gif"
         loop = asyncio.get_event_loop()
         args = (image, filename)
         loop.run_in_executor(executor=None, func=save_flag, *args)

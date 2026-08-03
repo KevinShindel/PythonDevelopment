@@ -26,7 +26,7 @@ def clock(func):
     return clocked
 
 
-@lru_cache()  # добавляем кеширование
+@lru_cache  # добавляем кеширование
 @clock  # добавляем наш декоратор
 def fibonacci(n):
     if n < 2:

@@ -20,14 +20,14 @@ class C(A):
 class D(B, C):
 
     def ping(self):  # MRO - Method Resolution Order - порядок разрешения
-        super(D, self).ping()
+        super().ping()
         print("post-ping :", self)
 
     def pingpong(self):
         self.ping()
-        super(D, self).ping()
+        super().ping()
         self.pong()
-        super(D, self).pong()
+        super().pong()
         C.pong(self)
 
     def super_ping(self):

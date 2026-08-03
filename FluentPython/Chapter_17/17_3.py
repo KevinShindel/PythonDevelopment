@@ -21,7 +21,7 @@ class ThreadPoolSubmitParser(BaseParser):
             results = []
             for future in as_completed(to_do):  # получение выполненых задач
                 res = future.result()  # получить результат задачи
-                msg = "{} result: {!r}".format(future, res)
+                msg = f"{future} result: {res!r}"
                 print(msg)
                 results.append(res)
 

@@ -57,7 +57,7 @@ class Cache:
                 obj = pickle.load(handler)
                 if obj["expired"] > datetime.datetime.utcnow():
                     return obj["obj"]
-        except IOError:
+        except OSError:
             pass
 
 

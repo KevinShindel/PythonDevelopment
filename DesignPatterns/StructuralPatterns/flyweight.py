@@ -1,5 +1,4 @@
 import json
-from typing import Dict
 
 
 class Flyweight:
@@ -27,20 +26,20 @@ class FlyweightFactory:
     doesn't exist yet.
     """
 
-    _flyweights: Dict[str, Flyweight] = {}
+    _flyweights: dict[str, Flyweight] = {}
 
-    def __init__(self, initial_flyweights: Dict) -> None:
+    def __init__(self, initial_flyweights: dict) -> None:
         for state in initial_flyweights:
             self._flyweights[self.get_key(state)] = Flyweight(state)
 
-    def get_key(self, state: Dict) -> str:
+    def get_key(self, state: dict) -> str:
         """
         Returns a Flyweight's string hash for a given state.
         """
 
         return "_".join(sorted(state))
 
-    def get_flyweight(self, shared_state: Dict) -> Flyweight:
+    def get_flyweight(self, shared_state: dict) -> Flyweight:
         """
         Returns an existing Flyweight with a given state or creates a new one.
         """

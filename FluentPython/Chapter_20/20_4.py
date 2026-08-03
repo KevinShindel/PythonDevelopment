@@ -13,14 +13,14 @@ def cls_name(obj_or_cls):
 def display(obj):
     cls = type(obj)
     if cls is type:
-        return "<class {}>".format(cls_name(obj))
+        return f"<class {cls_name(obj)}>"
     else:
-        return "<{} object>".format(cls_name(obj))
+        return f"<{cls_name(obj)} object>"
 
 
 def print_args(name, *args):
     pseudo_args = ", ".join(display(x) for x in args)
-    print("-> {}.__{}__({})".format(cls_name(args[0]), name, pseudo_args))
+    print(f"-> {cls_name(args[0])}.__{name}__({pseudo_args})")
 
 
 class Overriding:
@@ -47,7 +47,7 @@ class Managed:
     non_over = NonOverriding()
 
     def spam(self):
-        print("--> Managed.spam({})".format(display(self)))
+        print(f"--> Managed.spam({display(self)})")
 
 
 def main():

@@ -1,8 +1,9 @@
 # использование futures.as_completed
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from Chapter_17.base import BaseParser
 from tqdm import tqdm
+
+from Chapter_17.base import BaseParser
 
 
 class FuturesCompletedParser(BaseParser):
@@ -22,11 +23,11 @@ class FuturesCompletedParser(BaseParser):
                 try:
                     future.result()
                 except Exception as Err:
-                    error_msg = "ERROR {}".format(Err)
+                    error_msg = f"ERROR {Err}"
                 else:
                     error_msg = ""
                 if error_msg:
-                    print("*** Error for {}: {}***".format(cc, error_msg))
+                    print(f"*** Error for {cc}: {error_msg}***")
         return len(cc_list)
 
 
