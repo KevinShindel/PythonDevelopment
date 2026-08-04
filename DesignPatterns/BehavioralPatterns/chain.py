@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Optional
+from typing import Any
 
 
 class Handler(ABC):
@@ -15,7 +15,7 @@ class Handler(ABC):
         pass
 
     @abstractmethod
-    def handle(self, request) -> Optional[str]:
+    def handle(self, request) -> str | None:
         pass
 
 

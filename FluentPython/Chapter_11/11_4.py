@@ -15,7 +15,7 @@ isinstance(x, Real)
 # Опеределение и использование ABC
 import abc
 import random
-from typing import Iterable
+from collections.abc import Iterable
 
 """
 Что бы оправдать создание абстрактного базового класса

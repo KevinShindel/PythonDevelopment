@@ -1,6 +1,6 @@
 # гибкое создание объектов с помощью метода new
 import keyword
-from collections import Mapping, MutableSequence
+from collections.abc import Mapping, MutableSequence
 
 
 class Foo:

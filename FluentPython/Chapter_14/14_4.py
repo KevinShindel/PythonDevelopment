@@ -22,7 +22,7 @@ def main():
     )  # функция бесконечно генерирует данные
     print(list(gen))  # [1, 1.5, 2.0, 2.5]
 
-    r = list(filter(vowel, "Aardvark"))  #
+    r = list(filter(vowel, "Aardvark"))
     print(r)  # ['A', 'a', 'a']
 
     r = list(
@@ -30,7 +30,7 @@ def main():
     )  # принимает похожее на ложь значение
     print(r)  # ['r', 'd', 'v', 'r', 'k']
 
-    r = list(itertools.dropwhile(vowel, "Aardvark"))  #
+    r = list(itertools.dropwhile(vowel, "Aardvark"))
     print(r)  # ['r', 'd', 'v', 'a', 'r', 'k']
 
     r = list(
@@ -38,7 +38,7 @@ def main():
     )  # отдаёт элементы пока принимает похожее на истину значение, затем останавливается
     print(r)  # ['A', 'a']
 
-    r = list(itertools.compress("Aardvark", (1, 0, 11, 10, 1)))  #
+    r = list(itertools.compress("Aardvark", (1, 0, 11, 10, 1)))
     print(r)  # ['A', 'r', 'd', 'v']
 
     r = list(
@@ -68,14 +68,14 @@ def main():
     rez = list(
         map(operator.mul, range(11), [2, 4, 8])
     )  # выполняет функцию к каждому элементу
-    print(rez)  #
+    print(rez)
 
-    rez = list(itertools.starmap(operator.mul, enumerate("albatroz", 1)))  #
+    rez = list(itertools.starmap(operator.mul, enumerate("albatroz", 1)))
     print(rez)  # ['a', 'll', 'bbb', 'aaaa', 'ttttt', 'rrrrrr', 'ooooooo', 'zzzzzzzz']
 
     rez = list(itertools.chain(range(5), range(4)))  # связывает последовательности
     print(rez)
-    rez = list(itertools.chain.from_iterable(enumerate("ACAB")))  #
+    rez = list(itertools.chain.from_iterable(enumerate("ACAB")))
     print(rez)
 
     rez = list(

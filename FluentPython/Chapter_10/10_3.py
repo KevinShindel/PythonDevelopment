@@ -27,4 +27,4 @@ class Vector:
             if error:
                 msg = error.format(cls_name=cls.__name__, attr_name=name)
                 raise AttributeError(msg)
-        super(Vector, self).__setattr__(name, value)
+        super().__setattr__(name, value)

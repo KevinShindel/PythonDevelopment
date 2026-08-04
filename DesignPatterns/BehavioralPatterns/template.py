@@ -101,7 +101,7 @@ def client_code(abstract_class: AbstractClass) -> None:
 if __name__ == "__main__":
     print("Same client code can work with different subclasses:")
     client_code(ConcreteClass1())
-    print("")
+    print()
 
     print("Same client code can work with different subclasses:")
     client_code(ConcreteClass2())

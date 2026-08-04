@@ -32,7 +32,7 @@ class Tombola(ABC):
         return tuple(sorted(items))
 
 
-@Tombola.register  #
+@Tombola.register
 class TomboList(list):
 
     def pick(self):

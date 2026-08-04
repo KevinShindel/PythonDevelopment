@@ -1,7 +1,6 @@
 import datetime
 import time
 from abc import ABCMeta, abstractmethod
-from typing import List
 
 
 class Observer:
@@ -38,7 +37,7 @@ class EUTimeObserver(Observer):
 class Producer:
 
     def __init__(self):
-        self.__observers: List[Observer] = []
+        self.__observers: list[Observer] = []
         self.cur_time = None
 
     def register_observer(self, observer: Observer):

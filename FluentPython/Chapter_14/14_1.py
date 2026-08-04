@@ -4,7 +4,7 @@ from collections.abc import Iterable
 
 
 class Sentence:
-    REWORD = re.compile("\w+")
+    REWORD = re.compile(r"\w+")
 
     def __init__(self, text):
 
@@ -119,7 +119,7 @@ class SentenceIterator:
 
 class Sentence3:
 
-    REWORD = re.compile("\w+")
+    REWORD = re.compile(r"\w+")
 
     def __init__(self, text):
 
@@ -132,7 +132,6 @@ class Sentence3:
     def __iter__(self):
         for word in self.words:  # обходим self.words
             yield word  # отдаём текущее слово
-        return None  # генераторная функция не возбуждает StopIteration, return показан визуального понимания
 
 
 if __name__ == "__main__":

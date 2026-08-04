@@ -26,7 +26,7 @@ def main():
     display("results:", results)
     display("Waiting for individual results:")
     for i, result in enumerate(results):
-        display("result {}: {}".format(i, result))
+        display(f"result {i}: {result}")
 
 
 if __name__ == "__main__":

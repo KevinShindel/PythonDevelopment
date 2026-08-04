@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import List
 
 
 class Component(ABC):
@@ -99,7 +98,7 @@ class ConcreteVisitor2(Visitor):
         print(f"{element.special_method_of_concrete_component_b()} + ConcreteVisitor2")
 
 
-def client_code(components: List[Component], visitor: Visitor) -> None:
+def client_code(components: list[Component], visitor: Visitor) -> None:
     """
     The client code can run visitor operations over any set of elements without
     figuring out their concrete classes. The accept operation directs a call to

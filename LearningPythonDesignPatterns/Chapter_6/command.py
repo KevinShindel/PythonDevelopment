@@ -7,12 +7,10 @@ class Command(ABC):
     @abstractmethod
     def execute(self):
         """method for execute command"""
-        pass
 
     @abstractmethod
     def undo(self):
         """method for undo command"""
-        pass
 
 
 class LsReceiver:

@@ -39,7 +39,7 @@ class URL:
         try:
             data = pickle.load(open("last_short.p", "rb"))
             return data
-        except IOError:
+        except OSError:
             return ""
 
     @staticmethod
@@ -51,7 +51,7 @@ class URL:
         try:
             data = pickle.load(open("short_to_url.p", "rb"))
             return data
-        except IOError:
+        except OSError:
             return {}
 
     @staticmethod

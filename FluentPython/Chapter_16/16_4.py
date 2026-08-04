@@ -13,7 +13,7 @@ def demo_exc_handling():
         except DemoException:
             print(" DemoException handled. Continuing")
         else:
-            print("--> coroutine received: {!r}".format(x))
+            print(f"--> coroutine received: {x!r}")
     raise RuntimeError("This line should never run!")
 
 
@@ -26,7 +26,7 @@ def demo_finally():
             except DemoException:
                 print(" DemoException handled. Continuing")
             else:
-                print("--> coroutine received: {!r}".format(x))
+                print(f"--> coroutine received: {x!r}")
     finally:
         print("--> coroutine ending")
 

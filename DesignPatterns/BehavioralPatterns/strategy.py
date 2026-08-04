@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import List
 
 
 class Context:
@@ -60,7 +59,7 @@ class Strategy(ABC):
     """
 
     @abstractmethod
-    def do_algorithm(self, data: List):
+    def do_algorithm(self, data: list):
         pass
 
 
@@ -71,12 +70,12 @@ interface. The interface makes them interchangeable in the Context.
 
 
 class ConcreteStrategyA(Strategy):
-    def do_algorithm(self, data: List) -> List:
+    def do_algorithm(self, data: list) -> list:
         return sorted(data)
 
 
 class ConcreteStrategyB(Strategy):
-    def do_algorithm(self, data: List) -> List:
+    def do_algorithm(self, data: list) -> list:
         return reversed(sorted(data))
 
 

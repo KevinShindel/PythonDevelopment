@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Iterator
-from typing import Any, List
+from typing import Any
 
 """
 To create an iterator in Python, there are two abstract classes from the built-
@@ -54,7 +54,7 @@ class WordsCollection(Iterable):
     iterator instances, compatible with the collection class.
     """
 
-    def __init__(self, collection: List[Any] = []) -> None:
+    def __init__(self, collection: list[Any] = []) -> None:
         self._collection = collection
 
     def __iter__(self) -> AlphabeticalOrderIterator:
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     print("Straight traversal:")
     print("\n".join(collection))
-    print("")
+    print()
 
     print("Reverse traversal:")
     print("\n".join(collection.get_reverse_iterator()), end="")

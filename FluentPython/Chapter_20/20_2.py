@@ -8,14 +8,12 @@ class Quantity:
         cls = self.__class__  # ссылка на класс
         prefix = cls.__name__  # имя класса
         index = cls.__counter
-        self.storage_name = "_{}#{}".format(
-            prefix, index
-        )  # генерация уникального идентификатора
+        self.storage_name = f"_{prefix}#{index}"  # генерация уникального идентификатора
         cls.__counter += 1  # инкрементация счётчика
 
     def __get__(self, instance, owner):
         if instance is None:
-            return self  #
+            return self
         else:
             return getattr(instance, self.storage_name)
 

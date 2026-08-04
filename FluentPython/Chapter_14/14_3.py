@@ -1,6 +1,6 @@
 class ArithmeticProgression:
 
-    def __init__(self, begin, step, end=None):  #
+    def __init__(self, begin, step, end=None):
         self._begin = begin
         self._step = step
         self._end = end

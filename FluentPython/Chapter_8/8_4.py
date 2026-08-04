@@ -25,7 +25,7 @@ def main():
     bus2.pick("Charlie")
     print(bus2.passengers)  # тут тоже один элемент
     bus3 = HauntedBus()
-    print(bus3.passengers)  #
+    print(bus3.passengers)
     bus3.pick("Dave")
     print(bus2.passengers)  # внезано появляется элемент Dave
     # проблема в том что оба инстанса ссылаются на один и тот же список

@@ -10,7 +10,6 @@ class AbstractObject:
     @abstractmethod
     def sort(self, reverse=False):
         """ """
-        pass
 
 
 class RealSubject(AbstractObject):

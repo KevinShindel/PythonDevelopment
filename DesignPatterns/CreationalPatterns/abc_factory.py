@@ -87,7 +87,6 @@ class AbstractProductB(ABC):
         """
         Product B is able to do its own thing...
         """
-        pass
 
     @abstractmethod
     def another_useful_function_b(self, collaborator: AbstractProductA) -> None:
@@ -97,7 +96,6 @@ class AbstractProductB(ABC):
         The Abstract Factory makes sure that all products it creates are of the
         same variant and thus, compatible.
         """
-        pass
 
 
 """
