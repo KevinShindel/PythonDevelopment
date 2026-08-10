@@ -57,7 +57,6 @@ class Component(ABC):
         """
 
 
-
 class Leaf(Component):
     """
     The Leaf class represents the end objects of a composition. A leaf can't
