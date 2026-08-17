@@ -22,7 +22,28 @@ Result = namedtuple("Result", "status data")
 
 HTTPStatus = Enum("Status", "ok not_found error")
 
-POP20_CC = ["CN", "IN", "US", "ID", "BR", "PK", "NG", "BD", "RU", "JP", "MX", "PH", "VN", "ET", "EG", "DE", "IR", "TR", "CD", "FR"]
+POP20_CC = [
+    "CN",
+    "IN",
+    "US",
+    "ID",
+    "BR",
+    "PK",
+    "NG",
+    "BD",
+    "RU",
+    "JP",
+    "MX",
+    "PH",
+    "VN",
+    "ET",
+    "EG",
+    "DE",
+    "IR",
+    "TR",
+    "CD",
+    "FR",
+]
 
 
 DEST_DIR = "downloads/"

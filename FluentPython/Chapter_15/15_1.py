@@ -12,9 +12,7 @@ def main():
         i -= 1
         finalize = i
         print(i)
-    print(
-        "cycle is done!"
-    )  # выполняется только если finalize принял ложное значение
+    print("cycle is done!")  # выполняется только если finalize принял ложное значение
 
     try:
         print("do something")

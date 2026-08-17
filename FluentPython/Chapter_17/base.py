@@ -17,7 +17,47 @@ class FetchError(Exception):  # <1>
 
 
 class BaseParser:
-    POP20_CC = ["CN", "IN", "US", "ID", "BR", "PK", "NG", "BD", "RU", "JP", "MX", "PH", "VN", "ET", "EG", "DE", "IR", "TR", "CD", "FR", "AF", "AL", "AS", "DZ", "AO", "AQ", "AG", "AR", "AM", "AW", "AT", "AZ", "BS", "BH", "BY", "BE", "BO", "BF", "BI"]
+    POP20_CC = [
+        "CN",
+        "IN",
+        "US",
+        "ID",
+        "BR",
+        "PK",
+        "NG",
+        "BD",
+        "RU",
+        "JP",
+        "MX",
+        "PH",
+        "VN",
+        "ET",
+        "EG",
+        "DE",
+        "IR",
+        "TR",
+        "CD",
+        "FR",
+        "AF",
+        "AL",
+        "AS",
+        "DZ",
+        "AO",
+        "AQ",
+        "AG",
+        "AR",
+        "AM",
+        "AW",
+        "AT",
+        "AZ",
+        "BS",
+        "BH",
+        "BY",
+        "BE",
+        "BO",
+        "BF",
+        "BI",
+    ]
     BASE_URL = "https://www.worldometers.info/img/flags"
     DEST_DIR = "downloads/"
     MAX_WORKERS = 20
